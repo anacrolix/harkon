@@ -17,12 +17,12 @@ int main(int, char** argv) {
 
     std::string str;
 
-    std::cout << "> ";
+    std::cout << ":exit to quit\n> ";
 
     while (std::getline(std::cin, str))
     {
 
-        if (str.empty())
+        if (str == ":exit" || str == ":quit")
             break;
 
         std::string::const_iterator iter = str.begin();
@@ -34,7 +34,7 @@ int main(int, char** argv) {
 
         if (r && iter == end)
         {
-            std::cout << "Parsing succeeded: " << pretty_print(result) << "\n\n> ";
+            std::cout << "Parsing succeeded: " << pretty_print(result) << std::endl;
         }
         else
         {
@@ -44,9 +44,10 @@ int main(int, char** argv) {
             std::cout << "stopped at: \": " << rest << "\"\n";
             std::cout << "-------------------------\n";
         }
+
+        std::cout << "> ";
     }
 
-    std::cout << "exiting..." << std::endl;
     return 0;
 }
 
